@@ -1,17 +1,51 @@
-[gd_scene load_steps=4 format=3 uid="uid://bsroha38vqcik"]
+[gd_scene load_steps=6 format=3 uid="uid://bsroha38vqcik"]
 
 [ext_resource type="Script" uid="uid://b4cjjh3kmpfh3" path="res://enemy.gd" id="1_4gyqm"]
 [ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://characters/slime/slime.tscn" id="1_7k104"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
-radius = 54.3783
+radius = 64.0312
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4gyqm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gyqm"]
+bg_color = Color(0.551554, 1, 0.555816, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_4gyqm")
 
 [node name="Slime" parent="." instance=ExtResource("1_7k104")]
+unique_name_in_owner = true
 position = Vector2(0, 25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_4gyqm")
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_4gyqm")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -55.0
+offset_top = -95.0
+offset_right = 56.0
+offset_bottom = -70.0
+theme_override_colors/font_color = Color(0.158472, 0.158472, 0.158472, 1)
+theme_override_styles/background = SubResource("StyleBoxEmpty_4gyqm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4gyqm")
+value = 100.0
+show_percentage = false
+
+[connection signal="mouse_entered" from="HurtBox" to="." method="_on_hurt_box_mouse_entered"]
+[connection signal="mouse_exited" from="HurtBox" to="." method="_on_hurt_box_mouse_exited"]
