@@ -27,6 +27,7 @@ position = Vector2(26, -12)
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
+one_shot = true
 autostart = true
 
 [node name="BurstTimer" type="Timer" parent="."]
@@ -36,4 +37,3 @@ one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="BurstTimer" to="." method="_on_burst_timer_timeout"]
-[connection signal="timeout" from="BurstTimer" to="." method="_on_timer_timeout"]

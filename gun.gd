@@ -19,14 +19,16 @@ func shoot():
 func _on_timer_timeout() -> void:
 	shots_fired = 0
 	shoot()
+	
 	if BURST_COUNT > 1:
 		%BurstTimer.start(BURST_DELAY)
-
+	else:
+		%Timer.start(COOLDOWN)
 
 func _on_burst_timer_timeout() -> void:
-	shots_fired += 1
 	if shots_fired < BURST_COUNT:
 		shoot()
+		shots_fired += 1
 		%BurstTimer.start(BURST_DELAY)
 	else:
 		%BurstTimer.stop()

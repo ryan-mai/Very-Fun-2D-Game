@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsw8raqgacxsc"]
+[gd_scene load_steps=8 format=3 uid="uid://dsw8raqgacxsc"]
 
 [ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://cj8tca4yi35i4" path="res://player.gd" id="1_onrkg"]
@@ -10,7 +10,9 @@ radius = 33.1361
 [sub_resource type="CircleShape2D" id="CircleShape2D_i3pqv"]
 radius = 80.1561
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3pqv"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i3pqv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqtel"]
 bg_color = Color(0.551554, 1, 0.555816, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
@@ -42,12 +44,14 @@ position = Vector2(4, 3)
 shape = SubResource("CircleShape2D_i3pqv")
 debug_color = Color(0.999989, 0.236917, 0.522364, 0.419608)
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="HealthBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-offset_left = -102.0
-offset_top = -179.0
-offset_right = 101.0
-offset_bottom = -110.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_i3pqv")
+offset_left = -55.0
+offset_top = -162.0
+offset_right = 56.0
+offset_bottom = -137.0
+theme_override_colors/font_color = Color(0.158472, 0.158472, 0.158472, 1)
+theme_override_styles/background = SubResource("StyleBoxEmpty_i3pqv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hqtel")
 value = 100.0
 show_percentage = false
