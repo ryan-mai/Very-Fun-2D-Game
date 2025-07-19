@@ -7,6 +7,8 @@ var health = 4
 
 func _ready():
 	%Slime.play_walk()
+	%HealthBar.init_health(health)
+	
 
 func _physics_process(_delta):
 	var direction = global_position.direction_to(player.global_position)
@@ -16,7 +18,7 @@ func _physics_process(_delta):
 func take_damage():
 	%Slime.play_hurt()
 	health -= 1
-	%HealthBar.value = health*25
+	%HealthBar.health = health
 	
 	if health == 0:
 		const SMOKE_SCENE = preload("res://smoke_explosion/smoke_explosion.tscn")
